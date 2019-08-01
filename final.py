@@ -22,11 +22,11 @@ print(Y_train.shape)
 
 model=Sequential()
 
-model.add(Conv1D(64,kernel_size=(5),strides=1,input_shape=(28,28),padding="same",activation="relu"))
-model.add(MaxPooling1D((2),strides=2))
+model.add(Conv2D(64,kernel_size=(5,5),input_shape=(28,28),padding="same",activation='relu'))
+model.add(MaxPooling2D(pool_size=(2,2))
 
-model.add(Conv1D(128,kernel_size=(5),strides=1,activation="relu"))
-model.add(MaxPooling1D((2),strides=2))
+model.add(Conv2D(128,kernel_size=(5,5),padding="same",activation='relu'))
+model.add(MaxPooling2D(pool_size=(2,2))
 
 model.add(Flatten())
 model.add(Dense(84,activation="relu"))
@@ -36,9 +36,9 @@ model.add(Dropout(0.2))
 model.add(Dense(10,activation="softmax"))
 
 model.compile(optimizer="Adam",loss="categorical_crossentropy",metrics=["accuracy"])
-model.fit(X_train,Y_train,batch_size=256,epochs=5)
-score=model.evaluate(X_test,Y_test,batch_size=256)
-print("accuracy: ",score)
+model.fit(X_train,Y_train,batch_size=256,epochs=5,verbose=1,validation_data=(X_test,Y_test))
+score=model.evaluate(X_test,Y_test,batch_size=256,verbose=0)
+print("accuracy: ",score[1])
 
 flag=1
 
