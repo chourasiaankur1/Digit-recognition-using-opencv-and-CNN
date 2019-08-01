@@ -3,7 +3,7 @@ import cv2
 import tensorflow as tf
 import keras
 from keras.models import Sequential
-from keras.layers import Dense,Conv1D,Dropout,Flatten,MaxPooling1D
+from keras.layers import Dense,Conv2D,Dropout,Flatten,MaxPooling2D
 from keras.optimizers import Adam
 from keras.datasets import mnist
 
